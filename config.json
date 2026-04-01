@@ -1,0 +1,5 @@
+{
+  "database_url": "postgresql://user:pass@localhost/db",
+  "timeout": 30,
+  "retry_count": 3
+}
