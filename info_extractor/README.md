@@ -100,7 +100,6 @@ json_output = extractor.extract_to_json(review_text)
 .
 ├── info_extractor.py      # 主实现文件
 ├── test_extractor.py      # 测试文件
-├── py-day5.py            # 演示文件
 ├── requirements.txt      # 依赖列表
 └── README.md            # 项目文档
 ```
@@ -210,7 +209,7 @@ async def async_extract(review: str):
 
 ## 许可证
 
-MIT License
+jiangya@ License
 
 ## 支持
 
