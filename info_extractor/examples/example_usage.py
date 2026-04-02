@@ -4,8 +4,15 @@
 演示如何在实际项目中使用信息抽取器
 """
 
-import json
-from info_extractor import InfoExtractor, ReviewAnalysis, Sentiment
+import sys
+import os.path as osp
+# 获取当前文件所在目录和项目根目录
+project_root = osp.dirname(osp.dirname(osp.dirname(osp.abspath(__file__))))
+# 添加项目根目录到Python路径（如果尚未添加）
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+from info_extractor import InfoExtractor, ReviewAnalysis, Sentiment,summarize_results
 
 
 def example_with_mock_data():

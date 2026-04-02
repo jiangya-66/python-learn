@@ -5,8 +5,17 @@
 
 import os
 import sys
-from info_extractor import InfoExtractor, ReviewAnalysis, Sentiment
+import os.path as osp
 
+# 获取当前文件所在目录和项目根目录
+current_dir = osp.dirname(osp.abspath(__file__))
+project_root = osp.dirname(osp.dirname(current_dir))
+
+# 添加项目根目录到Python路径（如果尚未添加）
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+    
+from info_extractor.src.extractor import InfoExtractor, ReviewAnalysis, Sentiment
 
 def test_without_api_key():
     """测试无API密钥情况下的示例输出"""
@@ -20,7 +29,7 @@ def test_without_api_key():
         score=5
     )
     
-    print("示例输出格式:")
+    print("示例输出格式:") 
     print(example.model_dump_json(indent=2))
     print()
     

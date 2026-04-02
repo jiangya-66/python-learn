@@ -1,16 +1,25 @@
 # 信息抽取器依赖
-# 使用 pip install -r requirements.txt 安装
-
 # 核心依赖
-pydantic>=2.0.0          # 数据验证和序列化
-openai>=1.0.0            # DeepSeek API客户端（兼容OpenAI格式）
+pydantic>=2.0.0
+openai>=1.0.0
 
-# 可选依赖（用于更高级的用法）
-python-dotenv>=1.0.0     # 环境变量管理
-httpx>=0.25.0            # HTTP客户端（openai依赖）
-anyio>=4.0.0             # 异步I/O（openai依赖）
+# 可选依赖（用于异步操作和测试）
+aiohttp>=3.9.0
+aiofiles>=23.2.0
+python-dotenv>=1.0.0
 
-# 开发依赖
-pytest>=7.0.0            # 测试框架
-black>=23.0.0            # 代码格式化
-mypy>=1.0.0              # 类型检查
+# 开发依赖（可选）
+# pytest>=7.0.0
+# black>=23.0.0
+# mypy>=1.0.0
+# flake8>=6.0.0
+# isort>=5.12.0
+
+# 安装命令：
+# pip install -r requirements.txt
+
+# 最小安装（仅核心功能）：
+# pip install pydantic openai
+
+# 完整安装（包含异步支持和环境变量管理）：
+# pip install pydantic openai aiohttp aiofiles python-dotenv

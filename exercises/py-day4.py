@@ -25,8 +25,10 @@ class Config(BaseModel):
 
 def load_config():
     import json
-    # 从config.json文件加载配置
-    with open('config.json') as f:
+    import os
+    # 从configs/config.json文件加载配置
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'configs', 'config.json')
+    with open(config_path) as f:
         config_data = json.load(f)
     return Config(**config_data)
 

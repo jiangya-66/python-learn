@@ -36,7 +36,8 @@ async def network_request():
 async def file_read():
     """使用aiofiles模拟文件读取"""
     print("开始文件读取...")
-    async with aiofiles.open('python-day1.py', 'r', encoding='utf-8') as f:
+    # 读取当前文件自身作为示例
+    async with aiofiles.open(__file__, 'r', encoding='utf-8') as f:
         content = await f.read()
         print("文件读取完成")
         return f"文件读取结果: 读取了 {len(content)} 个字符"
