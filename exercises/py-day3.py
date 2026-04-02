@@ -112,74 +112,74 @@
 # # attendees属性虽然输入的是字符串，但会自动转换为整数
 # print(type(event.attendees))  # <class 'int'>
 
-# # 6. 配置和序列化 - Pydantic V2 版本
-# from pydantic import BaseModel, ConfigDict, Field
+# 6. 配置和序列化 - Pydantic V2 版本
+from pydantic import BaseModel, ConfigDict, Field
 
-# class User(BaseModel):
-#     id: int = Field(alias="ID")
-#     name: str = Field(alias="NAME")
-#     password: str = Field(alias="PASSWORD", exclude=True)
+class User(BaseModel):
+    id: int = Field(alias="ID")
+    name: str = Field(alias="NAME")
+    password: str = Field(alias="PASSWORD", exclude=True)
     
-#     # Pydantic V2 使用 ConfigDict
-#     model_config = ConfigDict(
-#         # 允许从ORM对象创建
-#         from_attributes=True,
-#         # 允许通过别名和原始名称填充字段
-#         populate_by_name=True,
-#         # 保护命名空间
-#         protected_namespaces=()
-#     )
+    # Pydantic V2 使用 ConfigDict
+    model_config = ConfigDict(
+        # 允许从ORM对象创建
+        from_attributes=True,
+        # 允许通过别名和原始名称填充字段
+        populate_by_name=True,
+        # 保护命名空间
+        protected_namespaces=()
+    )
 
-# # 假设有一个SQLAlchemy的User模型
-# class SQLAlchemyUser:
-#     def __init__(self, id, name, password):
-#         self.ID = id
-#         self.NAME = name
-#         self.PASSWORD = password
+# 假设有一个SQLAlchemy的User模型
+class SQLAlchemyUser:
+    def __init__(self, id, name, password):
+        self.ID = id
+        self.NAME = name
+        self.PASSWORD = password
 
-# # 创建ORM对象 - 使用小写字段名
-# db_user = SQLAlchemyUser(id=1, name="赵六", password="pass456")
+# 创建ORM对象 - 使用小写字段名
+db_user = SQLAlchemyUser(id=1, name="赵六", password="pass456")
 
-# print("=== Pydantic V2 兼容版本 ===")
-# print()
+print("=== Pydantic V2 兼容版本 ===")
+print()
 
-# # 测试1: 从ORM对象创建（使用小写字段名）
-# user1 = User.model_validate(db_user)  # 正确！
-# print("测试1 - 从ORM对象创建（小写字段）:")
-# print(f"  用户名: {user1.name}")  # 输出: 赵六
-# print(f"  序列化结果: {user1.model_dump()}")  # 密码字段被排除
+# 测试1: 从ORM对象创建（使用小写字段名）
+user1 = User.model_validate(db_user)  # 正确！
+print("测试1 - 从ORM对象创建（小写字段）:")
+print(f"  用户名: {user1.name}")  # 输出: 赵六
+print(f"  序列化结果: {user1.model_dump()}")  # 密码字段被排除
 
-# # 测试2: 使用大写字段名创建
-# user2 = User(ID=2, NAME="钱七", PASSWORD="pass789")
-# print("\n测试2 - 使用大写字段名创建:")
-# print(f"  用户名: {user2.name}")  # 输出: 钱七
-# print(f"  序列化结果: {user2.model_dump()}")  # 密码字段被排除
+# 测试2: 使用大写字段名创建
+user2 = User(ID=2, NAME="钱七", PASSWORD="pass789")
+print("\n测试2 - 使用大写字段名创建:")
+print(f"  用户名: {user2.name}")  # 输出: 钱七
+print(f"  序列化结果: {user2.model_dump()}")  # 密码字段被排除
 
-# # 测试3: 使用小写字段名创建
-# user3 = User(id=3, name="孙八", password="pass999")
-# print("\n测试3 - 使用小写字段名创建:")
-# print(f"  用户名: {user3.name}")  # 输出: 孙八
-# print(f"  序列化结果: {user3.model_dump()}")  # 密码字段被排除
+# 测试3: 使用小写字段名创建
+user3 = User(id=3, name="孙八", password="pass999")
+print("\n测试3 - 使用小写字段名创建:")
+print(f"  用户名: {user3.name}")  # 输出: 孙八
+print(f"  序列化结果: {user3.model_dump()}")  # 密码字段被排除
 
-# # 测试4: 混合大小写字段名
-# user4 = User(ID=4, name="李九", PASSWORD="pass000")
-# print("\n测试4 - 混合大小写字段名创建:")
-# print(f"  用户名: {user4.name}")  # 输出: 李九
-# print(f"  序列化结果: {user4.model_dump()}")  # 密码字段被排除
+# 测试4: 混合大小写字段名
+user4 = User(ID=4, name="李九", PASSWORD="pass000")
+print("\n测试4 - 混合大小写字段名创建:")
+print(f"  用户名: {user4.name}")  # 输出: 李九
+print(f"  序列化结果: {user4.model_dump()}")  # 密码字段被排除
 
-# # 测试5: 使用字典创建（混合大小写）
-# data = {"ID": 5, "name": "周十", "PASSWORD": "pass111"}
-# user5 = User(**data)
-# print("\n测试5 - 使用字典创建（混合大小写）:")
-# print(f"  用户名: {user5.name}")  # 输出: 周十
-# print(f"  序列化结果: {user5.model_dump()}")  # 密码字段被排除
+# 测试5: 使用字典创建（混合大小写）
+data = {"ID": 5, "name": "周十", "PASSWORD": "pass111"}
+user5 = User(**data)
+print("\n测试5 - 使用字典创建（混合大小写）:")
+print(f"  用户名: {user5.name}")  # 输出: 周十
+print(f"  序列化结果: {user5.model_dump()}")  # 密码字段被排除
 
-# print("\n=== 总结 ===")
-# print("SQLAlchemyUser中的字段名现在可以接受大写和小写！")
-# print("通过以下配置实现：")
-# print("1. 为每个字段显式定义别名（alias）")
-# print("2. 设置 populate_by_name=True 允许通过别名和原始名称填充")
-# print("3. 在Field中设置 exclude=True 排除密码字段")
+print("\n=== 总结 ===")
+print("SQLAlchemyUser中的字段名现在可以接受大写和小写！")
+print("通过以下配置实现：")
+print("1. 为每个字段显式定义别名（alias）")
+print("2. 设置 populate_by_name=True 允许通过别名和原始名称填充")
+print("3. 在Field中设置 exclude=True 排除密码字段")
 
 # # 7. 泛型支持
 # from pydantic import BaseModel
