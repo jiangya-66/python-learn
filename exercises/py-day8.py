@@ -243,6 +243,7 @@ class SamplingParameterComparator:
         
         # 计算唯一词汇数（简单版本）
         words = response.replace('\n', ' ').replace('，', ' ').replace('。', ' ').replace('！', ' ').replace('？', ' ').split()
+        # 
         words = [w for w in words if w.strip()]
         
         if not words:

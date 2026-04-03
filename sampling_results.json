@@ -1,0 +1,122 @@
+[
+  {
+    "temperature": 0,
+    "top_p": 0.1,
+    "prompt": "写一首关于春天的诗",
+    "response": "春天来了，万物复苏。\n春风轻拂，花香四溢。\n桃花盛开，柳絮飞舞。\n燕子归来，筑巢忙碌。\n阳光明媚，大地温暖。\n溪水潺潺，鱼儿欢跃。\n蝴蝶翩翩，蜜蜂嗡嗡。\n春意盎然，生机勃勃。\n踏青赏花，心情愉悦。\n一年之计，在于春天。",
+    "response_length": 109,
+    "timestamp": "2026-04-03 10:09:26",
+    "unique_words": 20,
+    "creativity_score": 7.0
+  },
+  {
+    "temperature": 0,
+    "top_p": 0.5,
+    "prompt": "写一首关于春天的诗",
+    "response": "春天来了，万物复苏。\n春风轻拂，花香四溢。\n桃花盛开，柳絮飞舞。\n燕子归来，筑巢忙碌。\n阳光明媚，大地温暖。\n溪水潺潺，鱼儿欢跃。\n蝴蝶翩翩，蜜蜂嗡嗡。\n春意盎然，生机勃勃。\n踏青赏花，心情愉悦。\n一年之计，在于春天。",
+    "response_length": 109,
+    "timestamp": "2026-04-03 10:09:26",
+    "unique_words": 20,
+    "creativity_score": 7.0
+  },
+  {
+    "temperature": 0,
+    "top_p": 0.9,
+    "prompt": "写一首关于春天的诗",
+    "response": "春天来了，万物复苏。\n春风轻拂，花香四溢。\n桃花盛开，柳絮飞舞。\n燕子归来，筑巢忙碌。\n阳光明媚，大地温暖。\n溪水潺潺，鱼儿欢跃。\n蝴蝶翩翩，蜜蜂嗡嗡。\n春意盎然，生机勃勃。\n踏青赏花，心情愉悦。\n一年之计，在于春天。",
+    "response_length": 109,
+    "timestamp": "2026-04-03 10:09:26",
+    "unique_words": 20,
+    "creativity_score": 7.0
+  },
+  {
+    "temperature": 0.5,
+    "top_p": 0.1,
+    "prompt": "写一首关于春天的诗",
+    "response": "青山绿水画中游，\n踏青赏花正当时，\n春风吹绿江南岸，\n蝴蝶翩翩舞花间，\n百花争艳斗芬芳，\n播种希望待秋收。\n青山绿水画中游，\n——春之颂",
+    "response_length": 68,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 7,
+    "creativity_score": 7.62
+  },
+  {
+    "temperature": 0.5,
+    "top_p": 0.5,
+    "prompt": "写一首关于春天的诗",
+    "response": "燕子归来筑新巢，\n桃花盛开映日红，\n万物复苏生机勃，\n踏青赏花正当时，\n百花争艳斗芬芳，\n阳光明媚照大地，\n（完）",
+    "response_length": 57,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 7,
+    "creativity_score": 7.38
+  },
+  {
+    "temperature": 0.5,
+    "top_p": 0.9,
+    "prompt": "写一首关于春天的诗",
+    "response": "一年之计在于春，\n桃花盛开映日红，\n鸟语花香春意浓，\n燕子归来筑新巢，\n播种希望待秋收。\n——春之颂",
+    "response_length": 50,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 6,
+    "creativity_score": 7.12
+  },
+  {
+    "temperature": 1.0,
+    "top_p": 0.1,
+    "prompt": "写一首关于春天的诗",
+    "response": "阳光明媚照大地，\n蝴蝶翩翩舞花间，\n溪水潺潺鱼儿跃，\n踏青赏花正当时，\n青山绿水画中游，\n桃花盛开映日红，\n播种希望待秋收。\n阳光明媚照大地，\n※ 春意盎然 ※",
+    "response_length": 80,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 9,
+    "creativity_score": 8.27
+  },
+  {
+    "temperature": 1.0,
+    "top_p": 0.5,
+    "prompt": "写一首关于春天的诗",
+    "response": "春雨绵绵润无声，\n溪水潺潺鱼儿跃，\n柳絮飞舞似雪花，\n万物复苏生机勃，\n踏青赏花正当时，\n鸟语花香春意浓，\n桃花盛开映日红，\n（完）",
+    "response_length": 66,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 8,
+    "creativity_score": 8.88
+  },
+  {
+    "temperature": 1.0,
+    "top_p": 0.9,
+    "prompt": "写一首关于春天的诗",
+    "response": "春风吹绿江南岸，\n燕子归来筑新巢，\n青山绿水画中游，\n溪水潺潺鱼儿跃，\n蝴蝶翩翩舞花间，\n百花争艳斗芬芳，\n（完）",
+    "response_length": 57,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 7,
+    "creativity_score": 8.12
+  },
+  {
+    "temperature": 1.5,
+    "top_p": 0.1,
+    "prompt": "写一首关于春天的诗",
+    "response": "桃花盛开映日红，\n阳光明媚照大地，\n溪水潺潺鱼儿跃，\n万物复苏生机勃，\n蝴蝶翩翩舞花间，\n燕子归来筑新巢，\n春雨绵绵润无声，\n柳絮飞舞似雪花，\n桃花盛开映日红，\n（完）",
+    "response_length": 84,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 9,
+    "creativity_score": 9.1
+  },
+  {
+    "temperature": 1.5,
+    "top_p": 0.5,
+    "prompt": "写一首关于春天的诗",
+    "response": "春雨绵绵润无声，\n青山绿水画中游，\n春风拂面花香浓，\n阳光明媚照大地，\n鸟语花香春意浓，\n桃花盛开映日红，\n蝴蝶翩翩舞花间，\n春风吹绿江南岸，",
+    "response_length": 71,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 8,
+    "creativity_score": 9.5
+  },
+  {
+    "temperature": 1.5,
+    "top_p": 0.9,
+    "prompt": "写一首关于春天的诗",
+    "response": "（自由体）\n蝴蝶翩翩舞花间，\n燕子归来筑新巢，\n播种希望待秋收。\n万物复苏生机勃，\n百花争艳斗芬芳，\n春风吹绿江南岸，\n春风拂面花香浓，\n※ 春意盎然 ※",
+    "response_length": 77,
+    "timestamp": "2026-04-03 10:09:27",
+    "unique_words": 10,
+    "creativity_score": 9.14
+  }
+]
