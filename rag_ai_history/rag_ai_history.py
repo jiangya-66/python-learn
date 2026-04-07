@@ -1,3 +1,10 @@
+'''
+# 任务：用 ChromaDB 搭建简易 RAG
+# 1. 准备 10 段关于“人工智能历史”的文本
+# 2. 向量化并存入 ChromaDB
+# 3. 用python 实现检索函数，根据 query 返回最相关的 3 段文本
+'''
+
 import hashlib
 import re
 from collections import Counter

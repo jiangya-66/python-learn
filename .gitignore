@@ -151,3 +151,6 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+# ChromaDB vector database directory
+chroma_db/
