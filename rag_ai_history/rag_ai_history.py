@@ -14,19 +14,24 @@ import numpy as np
 
 
 # ── 自定义离线嵌入函数（基于字符 n-gram） ─────────────────────────────
-# 定义一个名为 CharNgramEmbeddingFunction 的类，
-# 它遵循 ChromaDB 的嵌入函数标准规范（继承:chromadb.EmbeddingFunction），
-# 并且专门用于处理字符串列表类型的输入（泛型标注:list[str]）。
+""" 
+ 定义一个名为 CharNgramEmbeddingFunction 的类，
+ 它遵循 ChromaDB 的嵌入函数标准规范（继承:chromadb.EmbeddingFunction），
+ 并且专门用于处理字符串列表类型的输入（泛型标注:list[str]）。
+"""
 class CharNgramEmbeddingFunction(chromadb.EmbeddingFunction[list[str]]):
     """基于字符 n-gram 的轻量嵌入函数，无需联网下载模型。"""
-
-    # tuple：告诉程序，这个参数必须是一个元组。
-    # [int, int]：这是泛型写法，进一步规定了元组内部的结构，表示这个元组必须包含两个整数。
-    # = (1, 3)：默认值。如果调用函数时不传这个参数，就默认使用 (1, 3)
+    """ 
+     tuple：告诉程序，这个参数必须是一个元组。
+     [int, int]：这是泛型写法，进一步规定了元组内部的结构，表示这个元组必须包含两个整数。
+     = (1, 3)：默认值。如果调用函数时不传这个参数，就默认使用 (1, 3)
+    """ 
     def __init__(self, dim: int = 384, ngram_range: tuple[int, int] = (1, 3)):
         self.dim = dim
         self.ngram_range = ngram_range
 
+    # _extract_ngrams 方法：这个方法负责从输入文本中提取字符 n-gram。
+    # 它首先将文本转换为小写并去除空白，然后根据指定的 n-gram 范围生成所有可能的 n-gram 组合。
     def _extract_ngrams(self, text: str) -> list[str]:
         text = re.sub(r'\s+', '', text.lower())
         ngrams: list[str] = []
@@ -37,10 +42,14 @@ class CharNgramEmbeddingFunction(chromadb.EmbeddingFunction[list[str]]):
 
     def _text_to_vector(self, text: str) -> list[float]:
         ngrams = self._extract_ngrams(text)
+        # Counter：这是 Python 标准库中的一个类，用于统计可哈希对象的频率。
+        # 它会创建一个字典，其中键是 n-gram，值是该 n-gram 在文本中出现的次数。
         counts = Counter(ngrams)
-        # 创建一个长度为 384（self.dim）的一维数组，里面全部填满 0，
-        # 并且规定每个数字都必须是 32位浮点数（float32），最后把这个数组赋值给变量 vec。
-        # vec=[0.0, 0.0, 0.0, ..., 0.0] (共 384 个 0.0)
+        """
+         创建一个长度为 384（self.dim）的一维数组，里面全部填满 0，
+         并且规定每个数字都必须是 32位浮点数（float32），最后把这个数组赋值给变量 vec。
+         vec=[0.0, 0.0, 0.0, ..., 0.0] (共 384 个 0.0)
+        """
         vec = np.zeros(self.dim, dtype=np.float32)
         '''
         核心映射：的是把任意字符串变成一个固定的数字索引（0 到 383 之间）
@@ -67,7 +76,8 @@ class CharNgramEmbeddingFunction(chromadb.EmbeddingFunction[list[str]]):
         # 向量归一化：把 vec 中的所有数字除以它们的欧几里得范数（L2 范数），使得整个向量的长度变为 1。
         norm = np.linalg.norm(vec)
         if norm > 0:
-            # NumPy 的广播机制：当你对一个数组进行操作时，如果操作数的形状不完全匹配，NumPy 会自动“广播”较小的数组，使其形状与较大的数组兼容。
+            # NumPy 的广播机制：当你对一个数组进行操作时，如果操作数的形状不完全匹配，
+            # NumPy 会自动“广播”较小的数组，使其形状与较大的数组兼容。
             vec = vec / norm
         return vec.tolist()
 

@@ -22,7 +22,8 @@ from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'HyDE_demo'))
 
-from HyDE_demo import initialize_knowledge_base
+# 导入ChromaDB知识库模块
+from chroma_knowledge_base import initialize_knowledge_base
 
 # ============================================================================
 # 1. 知识库（存储在ChromaDB中）
