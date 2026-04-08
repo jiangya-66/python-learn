@@ -22,6 +22,7 @@
 │   ├── py-day9.py             # 去重实验：测试frequency_penalty和presence_penalty对重复性的影响
 │   ├── py-day10.py            # logit_bias强制输出特定词汇的demo
 │   ├── py-day11.py            # 使用RAG技术检索计算机技术发展史
+│   ├── py-day12.py            # HyDE (Hypothetical Document Embeddings) 演示
 ├── info_extractor/             # 信息抽取器子项目
 │   ├── __init__.py             # 包初始化文件
 │   ├── README.md               # 信息抽取器详细文档
@@ -39,6 +40,11 @@
 └── rag_ai_history/            # RAG（检索增强生成）AI历史检索系统
     ├── rag_ai_history.py      # RAG系统主程序：基于ChromaDB的AI历史检索
     └── knowledge.md           # 项目知识文档
+└── HyDE_demo/                 # HyDE (Hypothetical Document Embeddings) 演示
+    ├── hyde_demo.py           # HyDE主程序
+    ├── chroma_knowledge_base.py # ChromaDB知识库管理模块
+    ├── README.md              # HyDE项目详细文档
+    └── __pycache__/           # Python缓存目录
 ```
 
 ## 文件说明
@@ -99,7 +105,21 @@
 - 提供真实DeepSeek API实验代码示例
 - 生成热力图展示不同参数组合的效果
 
-### 5. RAG（检索增强生成）AI历史检索系统
+### 5. LLM高级控制实验
+
+**py-day10.py** - logit_bias强制输出特定词汇的demo
+- 使用logit_bias参数强制LLM输出特定词汇
+- 演示如何获取文本的token ID列表
+- 实现DeepSeek Tokenizer集成
+- 展示如何通过token bias控制模型输出
+
+### 6. RAG（检索增强生成）AI历史检索系统
+
+**py-day11.py** - 使用RAG技术检索计算机技术发展史
+- 准备10段关于"计算机技术发展史"的文本
+- 调用rag_ai_history子项目中的方法进行向量化
+- 基于ChromaDB向量数据库实现语义检索
+- 根据查询返回最相关的3段文本
 
 **rag_ai_history/** - RAG AI历史检索系统
 - 基于ChromaDB向量数据库实现
@@ -107,6 +127,21 @@
 - 包含10段关于人工智能历史的中文文本（1950-2022年重要事件）
 - 支持语义检索和相似度查询
 - 提供完整的检索增强生成演示
+
+### 7. HyDE (Hypothetical Document Embeddings) 演示
+
+**py-day12.py** - HyDE (Hypothetical Document Embeddings) 演示
+- 演示HyDE技术：通过LLM生成假设性答案提升检索准确性
+- 对比直接使用原问题检索和使用假设答案检索的效果差异
+- 集成DeepSeek LLM生成假设性答案
+- 使用ChromaDB向量数据库进行语义检索
+
+**HyDE_demo/** - HyDE演示项目
+- 完整的HyDE技术实现
+- 基于ChromaDB的持久化知识库管理
+- 包含13篇关于量子计算、密码学和相关技术的文档
+- 支持多语言文档和查询
+- 提供完整的检索结果对比分析
 
 ## 快速开始
 
@@ -132,6 +167,9 @@ pip install requests  # 用于DeepSeek API调用
 
 # 安装RAG AI历史检索系统依赖
 pip install chromadb numpy  # 用于向量数据库和数值计算
+
+# 安装HyDE演示依赖
+pip install chromadb sentence-transformers openai numpy  # 用于HyDE演示
 ```
 
 ### 运行示例
@@ -159,8 +197,20 @@ python info_extractor/src/main.py
 cd info_extractor
 python -m src.main
 
+# 运行LLM高级控制实验
+python exercises/py-day10.py  # logit_bias强制输出特定词汇demo
+
+# 运行RAG技术检索计算机技术发展史
+python exercises/py-day11.py  # RAG检索计算机技术发展史
+
+# 运行HyDE演示
+python exercises/py-day12.py  # HyDE (Hypothetical Document Embeddings) 演示
+
 # 运行RAG AI历史检索系统
 python rag_ai_history/rag_ai_history.py
+
+# 运行HyDE演示主程序
+python HyDE_demo/hyde_demo.py  # HyDE演示主程序
 ```
 
 ## 信息抽取器使用
@@ -223,11 +273,14 @@ print(json_output)
 2. **数据验证**：使用Pydantic进行严格的数据验证
 3. **API集成**：如何集成第三方API服务
 4. **LLM参数调优**：temperature、top_p、frequency_penalty、presence_penalty等参数对生成结果的影响
-5. **实验设计**：如何设计科学实验来测试不同参数的效果
-6. **项目结构**：合理的Python项目组织方式
-7. **错误处理**：完善的异常处理和用户反馈
-8. **向量数据库**：使用ChromaDB进行向量存储和检索
-9. **检索增强生成（RAG）**：构建基于向量检索的AI应用
+5. **LLM高级控制**：使用logit_bias强制输出特定词汇，token bias控制技术
+6. **实验设计**：如何设计科学实验来测试不同参数的效果
+7. **项目结构**：合理的Python项目组织方式
+8. **错误处理**：完善的异常处理和用户反馈
+9. **向量数据库**：使用ChromaDB进行向量存储和检索
+10. **检索增强生成（RAG）**：构建基于向量检索的AI应用
+11. **HyDE技术**：Hypothetical Document Embeddings技术，通过LLM生成假设性答案提升检索准确性
+12. **语义检索**：基于向量的语义相似度计算和文档检索
 
 ## 技术栈
 
@@ -239,6 +292,9 @@ print(json_output)
 - **aiohttp/aiofiles**：异步HTTP和文件操作
 - **ChromaDB**：向量数据库，用于存储和检索嵌入向量
 - **numpy**：数值计算库，用于向量操作和数学运算
+- **sentence-transformers**：文本嵌入模型库，用于语义向量编码
+- **DeepSeek Tokenizer**：DeepSeek模型的tokenizer库，用于token ID获取
+- **OpenAI Python SDK**：OpenAI API客户端库，用于与DeepSeek API交互
 
 ## 注意事项
 
@@ -262,6 +318,9 @@ jiangya@ License
 - **2026年4月**：修复信息抽取器中的循环导入问题，优化项目结构
 - **2026年4月**：添加LLM参数调优实验（py-day8.py和py-day9.py）
 - **2026年4月**：添加RAG AI历史检索系统（rag_ai_history/）
+- **2026年4月**：添加LLM高级控制实验（py-day10.py - logit_bias强制输出特定词汇demo）
+- **2026年4月**：添加RAG技术检索计算机技术发展史（py-day11.py）
+- **2026年4月**：添加HyDE (Hypothetical Document Embeddings) 演示（py-day12.py和HyDE_demo/）
 - **持续更新**：根据学习进度添加新功能
 
 ---
