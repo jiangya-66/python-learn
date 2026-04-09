@@ -154,3 +154,6 @@ Desktop.ini
 
 # ChromaDB vector database directory
 chroma_db/
+
+# Agents' skills directory
+.agents/skills/
